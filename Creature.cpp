@@ -7,28 +7,15 @@
 #include "stdlib.h"
 #include <random>
 
-Creature::Creature(){
-
+Creature::Creature() {
 }
 
-Creature::Creature(int pv, int atk, int lvl, int pvmax, std::string name){
-    this->pv = pv;
-    this->atk = atk;
-    this->lvl = lvl;
-    this->pvmax = pvmax;
-    this->name = name;
+Creature::Creature(int pv, int atk, int pvmax, int lvl, std::string name) : Entity(pv,  atk,  pvmax, name, lvl){
+    Entity (pv, atk, pvmax, name, lvl);
 }
 
 std::string Creature::getStats(){
     return "PV: " + std::to_string(pv) + "/" + std::to_string(pvmax) +" Atk: " + std::to_string(atk) + " Lvl: " + std::to_string(lvl) + "\n";
-}
-
-int Creature::getAtk(){
-    return this->atk;
-}
-
-int Creature::getPv(){
-    return this->pv;
 }
 
 void Creature::attackHero(Hero &h){
@@ -77,9 +64,6 @@ int Creature::getrandom(int min, int max) {
     return dis(gen);
 }
 
-int Creature::getLevel(){
-    return this->lvl;
-}
 
 void Creature::setAtk(int atk){
     this->atk = atk;
@@ -101,9 +85,7 @@ void Creature::setName(std::string name){
     this->name = name;
 }
 
-std::string Creature::getName(){
-    return this->name;
-}
+
 
 void Creature::createCreature(int lvlhero) {
     std::string names[7] = {"Loup","Chimere","Troll","Goblin","Golem","Demon","Dragonneau"};

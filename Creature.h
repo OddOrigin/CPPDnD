@@ -8,34 +8,27 @@
 #include "stdlib.h"
 
 #include <string>
+#include "Entity.h"
 class Hero;
 
-class Creature {
+class Creature : public Entity{
 private:
-    int pv;
-    int atk;
-    int lvl;
-    int pvmax;
-    std::string name;
+
 public:
-    Creature();
     //constructeur
-    Creature(int pv, int atk, int lvl, int pvmax, std::string name);
+    Creature();
+    Creature(int pv, int atk, int pvmax, int lvl, std::string name);
     //methodes
     std::string getStats();
     void attackHero(Hero &h);
     void takeDamage(int dmg);
-    int getAtk();
-    int getPv();
     int getrandom(int min, int max);
-    int getLevel();
     void createCreature(int lvlhero);
     void setAtk(int atk);
     void setPv(int pv);
     void setLevel(int level);
     void setPvmax(int pvmax);
     void setName(std::string name);
-    std::string getName();
     void createCustom(int pv, int atk, int lvl, std::string name);
 };
 

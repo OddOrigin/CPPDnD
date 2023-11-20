@@ -8,29 +8,24 @@
 #include "stdlib.h"
 #include <string>
 #include "Creature.h"
-
+#include "Entity.h"
 //TODO LIST : ATTAQUE ULTIME, CLASSES, FINDRELIC
 
-class Hero {
+class Hero : public Entity{
 private:
-    std::string name;
-    int pv;
-    int atk;
-    int pvmax;
     int mana;
     int manamax;
     int potions;
     int coins;
-    int lvl;
+
 public:
     //constructeur
     Hero();
-    Hero(std::string name, int pv, int atk, int pvmax, int mana, int manamax, int potions, int coins, int lvl);
+    Hero(std::string name, int pv, int atk, int pvmax, int lvl, int mana, int manamax, int potions, int coins);
     //methodes
     std::string getStats();
     void attackCreature(Creature &c);
     void takeDamage(int dmg);
-    int getAtk();
     void usePotionHeal();
     void usePotionMana();
     //void fight(Creature &c);
@@ -48,13 +43,10 @@ public:
     //void saveGame();
     //void loadGame(std::string filename);
     std::string getName();
-    int getpv();
     int getmana();
-    int getpvmax();
     int getmanamax();
     int getPotions();
     int getCoins();
-    int getLvl();
     void setPv(int pv);
     void setMana(int mana);
     void setCoins(int coins);

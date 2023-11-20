@@ -29,5 +29,4 @@ public:
     void rollQuest();
 };
 
-
 #endif //CPPDND_JEU_H

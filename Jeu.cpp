@@ -41,7 +41,7 @@ void Jeu::explore() {
         switch (choix) {
             case 1:
                 printf("La creature vous attaque !\n");
-                this->creature.createCreature(this->hero.getLvl());
+                this->creature.createCreature(this->hero.getlvl());
                 fight();
                 leftCrossroad = 1;
                 break;
@@ -111,11 +111,11 @@ void Jeu::rest(){
 }
 
 void Jeu::fight() {
-    std::cout << this->creature.getName() << " : " << this->creature.getStats();
+    std::cout << this->creature.getname() << " : " << this->creature.getStats();
     std::cout << "Hero : " << this->hero.getStats();
     int i = 0;
 
-    while (this->hero.getpv() > 0 && this->creature.getPv() > 0) {
+    while (this->hero.getpv() > 0 && this->creature.getpv() > 0) {
         i++;
         printf("Tour %d\n", i);
         int turnDone = 0;
@@ -158,13 +158,13 @@ void Jeu::fight() {
                     break;
             }
         }
-        if (this->creature.getPv() > 0) {
+        if (this->creature.getpv() > 0) {
             printf("\n");
             this->creature.attackHero(this->hero);
         }
 
         printf("\n");
-        std::cout << this->creature.getName() << " : " << this->creature.getStats();
+        std::cout << this->creature.getname() << " : " << this->creature.getStats();
         std::cout << "Hero : " << this->hero.getStats();
         printf("\n");
         printf("\n");
@@ -172,7 +172,7 @@ void Jeu::fight() {
     if (this->hero.getpv() > 0){
         printf("Vous fouillez la depouille de la creature et ");
         this->hero.loot(this->creature);
-        this->hero.levelUp(this->creature.getLevel());
+        this->hero.levelUp(this->creature.getlvl());
     }
 }
 
@@ -215,13 +215,13 @@ void Jeu::rollQuest() {
     switch (roll) {
         case 1:
             printf("Alors que vous vous approchez du coffre, vous sentez une presence, juste avant de vous faire envoyer au mur ! \n");
-            this->creature.createCreature(this->hero.getLvl());
+            this->creature.createCreature(this->hero.getlvl());
             fight();
             printf("Apres avoir triomphe, vous ouvrez le coffre, mais... il est vide !\n");
             break;
         case 2:
             printf("Alors que vous vous approchez du coffre, une silhouette s'impose devant vous ! \n");
-            this->creature.createCreature(this->hero.getLvl());
+            this->creature.createCreature(this->hero.getlvl());
             fight();
             printf("Apres avoir triomphe, vous ouvrez le coffre et ");
             this->hero.findRelic();
@@ -241,12 +241,12 @@ void Jeu::rollQuest() {
         case 6:
             printf("Vous vous approchez du coffre, et alors que vous l'ouvrez, il se referme sur votre main que vous avez a peine le temps d'enlever ! \n");
             printf("Le coffre etait une mimique ! \n");
-            this->creature.createCustom(this->hero.getLvl()*2+3, this->hero.getLvl()+3, this->hero.getLvl(), "Mimique");
+            this->creature.createCustom(this->hero.getlvl()*2+3, this->hero.getlvl()+3, this->hero.getlvl(), "Mimique");
             fight();
             break;
         case 7:
             printf("En approchant le coffre, une presence s'impose devant vous ! \n");
-            this->creature.createCreature(this->hero.getLvl());
+            this->creature.createCreature(this->hero.getlvl());
             fight();
             coins = this->hero.getrandom(8, 12);
             printf("Apres avoir triomphe, vous ouvrez le coffre et trouvez %d pieces d'or ! \n", coins);
@@ -254,4 +254,6 @@ void Jeu::rollQuest() {
             break;
     }
 };
+
+
 

@@ -1,6 +1,3 @@
-//
-// Created by julie on 13/11/2023.
-//
 #include <iostream>
 #include "Hero.h"
 #include "Creature.h"
@@ -12,16 +9,13 @@ Hero::Hero(){
 
 }
 
-Hero::Hero(std::string name, int pv, int atk, int pvmax, int mana, int manamax, int potions, int coins, int lvl) {
-    this->name = name;
-    this->pv = pv;
-    this->atk = atk;
-    this->pvmax = pvmax;
+Hero::Hero(std::string name, int pv, int atk, int pvmax, int lvl, int mana, int manamax, int potions, int coins) : Entity(pv, atk, pvmax, name, lvl) {
+    Entity(pv, atk, pvmax, name, lvl);
     this->mana = mana;
     this->potions = potions;
     this->manamax = manamax;
     this->coins = coins;
-    this->lvl = lvl;
+
 }
 
 std::string Hero::getStats() {
@@ -32,17 +26,13 @@ std::string Hero::getName(){
     return this->name;
 }
 
-int Hero::getpv(){
-    return this->pv;
-}
+
 
 int Hero::getmana(){
     return this->mana;
 }
 
-int Hero::getpvmax(){
-    return this->pvmax;
-}
+
 
 int Hero::getmanamax(){
     return this->manamax;
@@ -56,13 +46,7 @@ int Hero::getCoins(){
     return this->coins;
 }
 
-int Hero::getLvl(){
-    return this->lvl;
-}
 
-int Hero::getAtk() {
-    return this->atk;
-}
 
 void Hero::attackCreature(Creature &c) {
     printf("Un Hero attaque une Creature !\n");
@@ -289,14 +273,14 @@ void Hero::explore(Creature &c) {
 
 void Hero::loot(Creature &c){
     if (getrandom(0, 10) > 5 ){
-        printf("vous trouvez 1 potion et %d pieces d'or !\n",  c.getLevel() + 5);
+        printf("vous trouvez 1 potion et %d pieces d'or !\n",  c.getlvl() + 5);
         this->potions += 1;
-        this->coins +=  c.getLevel() + 5;
+        this->coins +=  c.getlvl() + 5;
 
     } else{
         if (getrandom(0, 10) > 7){
-        printf("vous trouvez %d pieces d'or !\n", c.getLevel());
-        this->coins += c.getLevel() ;
+        printf("vous trouvez %d pieces d'or !\n", c.getlvl());
+        this->coins += c.getlvl() ;
         }
         else{
             printf("vous ne trouvez rien !\n");
