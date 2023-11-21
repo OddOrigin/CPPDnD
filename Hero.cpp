@@ -68,7 +68,7 @@ void Hero::attackCreature(Creature &c) {
     }
     else {
         if (getrandom(1,15)>14){
-            int dmg = atk1;
+            int dmg = atk2;
             printf("La creature inflige un coup critique et vous inflige %d de dommages !\n", dmg);
             takeDamage(dmg);
         }

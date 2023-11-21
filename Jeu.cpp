@@ -40,9 +40,14 @@ void Jeu::explore() {
         fseek(stdin, 0, SEEK_END);
         switch (choix) {
             case 1:
-                printf("La creature vous attaque !\n");
-                this->creature.createCreature(this->hero.getlvl());
-                fight();
+                if (this->hero.getrandom(1,10) > 7) {
+                    printf("La creature vous attaque !\n");
+                    this->creature.createCreature(this->hero.getlvl());
+                    fight();
+                }
+                else{
+                    rareEncounter();
+                }
                 leftCrossroad = 1;
                 break;
             case 2:
@@ -178,7 +183,7 @@ void Jeu::fight() {
 
 
 void Jeu::shop() {
-    printf("Vous entrez dans la taverne !\n");
+    printf("Vous entrez dans la boutique !\n");
     int inshop = 1;
     while (inshop == 1) {
         printf("\n");
@@ -255,5 +260,29 @@ void Jeu::rollQuest() {
     }
 };
 
-
+void Jeu::rareEncounter() {
+    int roll = this->hero.getrandom(1, 10);
+    switch (roll) {
+        case 1: // fouille un cadavre, haute chance de trouver or/relique
+            break;
+        case 2: //pnj quete
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
+            break;
+        case 9: //dungeon
+            break;
+        case 10: //chateau boss fight
+            break;
+    }
+}
 

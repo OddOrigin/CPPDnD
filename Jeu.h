@@ -27,6 +27,7 @@ public:
     void fight();
     void shop();
     void rollQuest();
+    void rareEncounter();
 };
 
 #endif //CPPDND_JEU_H
