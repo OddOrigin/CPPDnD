@@ -264,12 +264,30 @@ void Jeu::rareEncounter() {
     int roll = this->hero.getrandom(1, 10);
     switch (roll) {
         case 1: // fouille un cadavre, haute chance de trouver or/relique
+            printf("Vous trouvez le cadavre d'un hero et decidez de le fouiller \n");
+            roll = this->hero.getrandom(1, 10);
+            if (roll < 3) {
+                printf("Vous ne trouvez rien !\n");
+            }
+            else if (roll < 6) {
+                int coins = this->hero.getrandom(3, 7);
+                printf("Vous trouvez %d pieces d'or !\n", coins);
+            }
+            else {
+                this->hero.findRelic();
+            }
             break;
         case 2: //pnj quete
+
             break;
         case 3:
+            printf("Vous voyez un batiment qui semble abandonné, et decidez d'y aller a la recherche de richesses \n");
+            rollQuest();
             break;
-        case 4:
+        case 4: //rare shop
+            printf("Alors que vous explorez la foret, un marchant itinerant vous approche \n");
+
+
             break;
         case 5:
             break;
@@ -286,3 +304,21 @@ void Jeu::rareEncounter() {
     }
 }
 
+void Jeu::rareShop() {
+    int roll = this->hero.getrandom(1, 5);
+    switch (roll) {
+        case 1:
+            printf("Ce marchand vous propose des potions a un bas prix, 4 potions pour 8 pieces d'or \n");
+            break;
+        case 2:
+            printf("Ce marchand vous propose une epee rarissime pour 15 pieces d'or \n");
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+    }
+
+}
