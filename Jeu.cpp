@@ -286,8 +286,7 @@ void Jeu::rareEncounter() {
             break;
         case 4: //rare shop
             printf("Alors que vous explorez la foret, un marchant itinerant vous approche \n");
-
-
+            rareShop();
             break;
         case 5:
             break;

@@ -11,4 +11,6 @@ add_executable(cppDND main.cpp
         Jeu.cpp
         Jeu.h
         Entity.cpp
-        Entity.h)
+        Entity.h
+        Boss.cpp
+        Boss.h)
